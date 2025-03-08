@@ -212,8 +212,8 @@ export default function AdminLayout({
             <h1 className="text-lg font-semibold">
               {pathname === "/admin"
                 ? "Dashboard Overview"
-                : pathname.split("/").pop()?.charAt(0).toUpperCase() +
-                  pathname.split("/").pop()?.slice(1)}
+                : (pathname.split("/").pop() || "").charAt(0).toUpperCase() +
+                  (pathname.split("/").pop() || "").slice(1)}
             </h1>
           </div>
           <div className="flex items-center space-x-3">
