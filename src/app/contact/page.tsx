@@ -3,9 +3,9 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -13,7 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Mail, Phone, MapPin, MessageSquare, CheckCircle } from "lucide-react";
+import { Mail, Phone, MapPin, MessageSquare, Clock, Send } from "lucide-react";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -21,237 +21,314 @@ export default function ContactPage() {
     email: "",
     subject: "",
     message: "",
+    department: "general",
   });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSelectChange = (value: string) => {
+    setFormData((prev) => ({ ...prev, department: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     // Simulate API call
-    try {
-      // In a real app, you would call your API here
-      console.log("Submitting contact form:", formData);
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      setIsSubmitted(true);
-    } catch (error) {
-      console.error("Error submitting form:", error);
-    } finally {
+    setTimeout(() => {
       setIsSubmitting(false);
-    }
-  };
+      setSubmitted(true);
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+        department: "general",
+      });
 
-  const contactInfo = [
-    {
-      icon: <Mail className="h-6 w-6 text-orange-500" />,
-      title: "Email Us",
-      details: "support@smartlearn.com",
-      description: "For general inquiries and support",
-    },
-    {
-      icon: <Phone className="h-6 w-6 text-orange-500" />,
-      title: "Call Us",
-      details: "+1 (555) 123-4567",
-      description: "Mon-Fri from 9am to 6pm EST",
-    },
-    {
-      icon: <MapPin className="h-6 w-6 text-orange-500" />,
-      title: "Visit Us",
-      details: "123 Learning Street, New York, NY 10001",
-      description: "Our headquarters location",
-    },
-  ];
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 5000);
+    }, 1500);
+  };
 
   return (
     <div className="container py-12">
-      <div className="text-center mb-12">
-        <h1 className="text-3xl font-bold mb-4">Contact Us</h1>
-        <p className="text-muted-foreground max-w-2xl mx-auto">
-          Have questions or need assistance? We're here to help. Reach out to
-          our team using any of the methods below.
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-        {contactInfo.map((info, index) => (
-          <Card
-            key={index}
-            className="text-center hover:shadow-md transition-shadow duration-200"
-          >
-            <CardContent className="pt-6 pb-6">
-              <div className="flex justify-center mb-4">
-                <div className="p-3 bg-orange-100 rounded-full">
-                  {info.icon}
-                </div>
-              </div>
-              <h3 className="text-xl font-bold mb-2">{info.title}</h3>
-              <p className="font-medium mb-1">{info.details}</p>
-              <p className="text-sm text-muted-foreground">
-                {info.description}
-              </p>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-        <div>
-          <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
-
-          {isSubmitted ? (
-            <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
-              <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-4" />
-              <h3 className="text-xl font-bold mb-2">Thank You!</h3>
-              <p className="text-muted-foreground mb-4">
-                Your message has been sent successfully. We'll get back to you
-                as soon as possible.
-              </p>
-              <Button
-                onClick={() => {
-                  setIsSubmitted(false);
-                  setFormData({
-                    name: "",
-                    email: "",
-                    subject: "",
-                    message: "",
-                  });
-                }}
-                className="bg-orange-500 hover:bg-orange-600"
-              >
-                Send Another Message
-              </Button>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <Label htmlFor="name">Your Name</Label>
-                  <Input
-                    id="name"
-                    name="name"
-                    placeholder="John Doe"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email Address</Label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="john@example.com"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="subject">Subject</Label>
-                <Select>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select a subject" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="general">General Inquiry</SelectItem>
-                    <SelectItem value="support">Technical Support</SelectItem>
-                    <SelectItem value="billing">Billing Question</SelectItem>
-                    <SelectItem value="partnership">
-                      Partnership Opportunity
-                    </SelectItem>
-                    <SelectItem value="feedback">Feedback</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="message">Message</Label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  placeholder="How can we help you?"
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="min-h-32"
-                  required
-                />
-              </div>
-
-              <Button
-                type="submit"
-                className="bg-orange-500 hover:bg-orange-600 w-full md:w-auto"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? "Sending..." : "Send Message"}
-              </Button>
-            </form>
-          )}
+      <div className="max-w-5xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Have questions or need assistance? We're here to help. Reach out to
+            our team and we'll get back to you as soon as possible.
+          </p>
         </div>
 
-        <div>
-          <h2 className="text-2xl font-bold mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Contact Information */}
+          <div className="space-y-6">
+            <Card>
+              <CardContent className="p-6">
+                <div className="flex items-start space-x-4">
+                  <Mail className="h-6 w-6 text-orange-500 mt-1" />
+                  <div>
+                    <h3 className="font-medium">Email Us</h3>
+                    <p className="text-sm text-muted-foreground mb-1">
+                      For general inquiries and support
+                    </p>
+                    <a
+                      href="mailto:support@smartlearn.com"
+                      className="text-orange-500 hover:underline"
+                    >
+                      support@smartlearn.com
+                    </a>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent className="p-6">
+                <div className="flex items-start space-x-4">
+                  <Phone className="h-6 w-6 text-orange-500 mt-1" />
+                  <div>
+                    <h3 className="font-medium">Call Us</h3>
+                    <p className="text-sm text-muted-foreground mb-1">
+                      Monday to Friday, 9am to 6pm EST
+                    </p>
+                    <a
+                      href="tel:+1-555-123-4567"
+                      className="text-orange-500 hover:underline"
+                    >
+                      +1 (555) 123-4567
+                    </a>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent className="p-6">
+                <div className="flex items-start space-x-4">
+                  <MapPin className="h-6 w-6 text-orange-500 mt-1" />
+                  <div>
+                    <h3 className="font-medium">Visit Us</h3>
+                    <p className="text-sm text-muted-foreground mb-1">
+                      Our headquarters location
+                    </p>
+                    <address className="not-italic text-sm">
+                      123 Learning Street
+                      <br />
+                      New York, NY 10001
+                      <br />
+                      United States
+                    </address>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent className="p-6">
+                <div className="flex items-start space-x-4">
+                  <Clock className="h-6 w-6 text-orange-500 mt-1" />
+                  <div>
+                    <h3 className="font-medium">Business Hours</h3>
+                    <div className="text-sm space-y-1 mt-2">
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">
+                          Monday - Friday:
+                        </span>
+                        <span>9:00 AM - 6:00 PM</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Saturday:</span>
+                        <span>10:00 AM - 4:00 PM</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Sunday:</span>
+                        <span>Closed</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Contact Form */}
+          <div className="md:col-span-2">
+            <Card>
+              <CardHeader>
+                <CardTitle>Send Us a Message</CardTitle>
+              </CardHeader>
+              <CardContent>
+                {submitted ? (
+                  <div className="bg-green-50 border border-green-200 text-green-700 p-4 rounded-md">
+                    <h3 className="font-medium text-green-800 mb-2">
+                      Message Sent!
+                    </h3>
+                    <p>
+                      Thank you for contacting us. We've received your message
+                      and will get back to you as soon as possible.
+                    </p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <Label htmlFor="name">Your Name</Label>
+                        <Input
+                          id="name"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          placeholder="John Doe"
+                          required
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="email">Email Address</Label>
+                        <Input
+                          id="email"
+                          name="email"
+                          type="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          placeholder="john@example.com"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <Label htmlFor="department">Department</Label>
+                        <Select
+                          value={formData.department}
+                          onValueChange={handleSelectChange}
+                        >
+                          <SelectTrigger id="department">
+                            <SelectValue placeholder="Select department" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="general">
+                              General Inquiry
+                            </SelectItem>
+                            <SelectItem value="support">
+                              Technical Support
+                            </SelectItem>
+                            <SelectItem value="billing">
+                              Billing & Payments
+                            </SelectItem>
+                            <SelectItem value="partnerships">
+                              Partnerships
+                            </SelectItem>
+                            <SelectItem value="careers">Careers</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="subject">Subject</Label>
+                        <Input
+                          id="subject"
+                          name="subject"
+                          value={formData.subject}
+                          onChange={handleChange}
+                          placeholder="How can we help you?"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="message">Message</Label>
+                      <Textarea
+                        id="message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        placeholder="Please provide details about your inquiry..."
+                        rows={6}
+                        required
+                      />
+                    </div>
+
+                    <Button
+                      type="submit"
+                      className="w-full bg-orange-500 hover:bg-orange-600"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <div className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          <Send className="mr-2 h-4 w-4" />
+                          Send Message
+                        </>
+                      )}
+                    </Button>
+                  </form>
+                )}
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        {/* FAQ Section */}
+        <div className="mt-16">
+          <h2 className="text-2xl font-bold mb-6 text-center">
             Frequently Asked Questions
           </h2>
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-lg font-bold mb-2">
-                How do I reset my password?
-              </h3>
-              <p className="text-muted-foreground">
-                You can reset your password by clicking on the "Forgot Password"
-                link on the login page. You'll receive an email with
-                instructions to create a new password.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-lg font-bold mb-2">
-                Can I get a refund for a course?
-              </h3>
-              <p className="text-muted-foreground">
-                Yes, we offer a 30-day money-back guarantee for most courses. If
-                you're unsatisfied with your purchase, you can request a refund
-                within 30 days of purchase.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-lg font-bold mb-2">
-                How do I become an instructor?
-              </h3>
-              <p className="text-muted-foreground">
-                To become an instructor, visit our "Teach on SmartLearn" page
-                and fill out the application form. Our team will review your
-                application and get back to you within 5 business days.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-lg font-bold mb-2">
-                Do you offer team or enterprise plans?
-              </h3>
-              <p className="text-muted-foreground">
-                Yes, we offer special plans for teams and organizations. Visit
-                our "SmartLearn for Business" page or contact our sales team at
-                business@smartlearn.com for more information.
-              </p>
-            </div>
-            <div className="text-center mt-8">
-              <Button className="bg-orange-500 hover:bg-orange-600" asChild>
-                <a href="/faq">View All FAQs</a>
-              </Button>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              {
+                question: "How quickly can I expect a response?",
+                answer:
+                  "We aim to respond to all inquiries within 24-48 business hours. For urgent matters, please call our support line.",
+              },
+              {
+                question: "Do you offer technical support on weekends?",
+                answer:
+                  "Our technical support team is available Monday through Friday. For weekend emergencies, please use our email support with 'URGENT' in the subject line.",
+              },
+              {
+                question: "How do I request a refund?",
+                answer:
+                  "Refund requests should be submitted through your account dashboard or by contacting our billing department directly at billing@smartlearn.com.",
+              },
+              {
+                question: "Can I visit your office without an appointment?",
+                answer:
+                  "We recommend scheduling an appointment to ensure the appropriate team member is available to assist you. Please contact us to arrange a visit.",
+              },
+            ].map((faq, index) => (
+              <Card key={index}>
+                <CardContent className="p-6">
+                  <div className="flex items-start space-x-4">
+                    <MessageSquare className="h-6 w-6 text-orange-500 mt-1" />
+                    <div>
+                      <h3 className="font-medium mb-2">{faq.question}</h3>
+                      <p className="text-sm text-muted-foreground">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </div>
