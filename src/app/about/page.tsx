@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { BookOpen, Globe, Users, Award, BarChart, Heart } from "lucide-react";
+import { BookOpen, Globe, Users, Award, Heart } from "lucide-react";
 
 export default function AboutPage() {
   const stats = [
@@ -39,7 +39,7 @@ export default function AboutPage() {
       title: "Practical Skills",
       description:
         "Our courses focus on real-world skills that help students achieve their personal and professional goals.",
-      icon: <BarChart className="h-8 w-8 text-orange-500" />,
+      icon: <Award className="h-8 w-8 text-orange-500" />,
     },
     {
       title: "Lifelong Learning",
@@ -95,90 +95,101 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="container py-12">
+    <div className="container py-12 space-y-16">
       {/* Hero Section */}
-      <div className="text-center mb-16">
-        <h1 className="text-4xl font-bold mb-4">About SmartLearn</h1>
-        <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-          We're on a mission to transform lives through education by connecting
-          students worldwide with the best instructors and courses.
-        </p>
-      </div>
-
-      {/* Stats Section */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-        {stats.map((stat, index) => (
-          <Card key={index} className="text-center">
-            <CardContent className="pt-6">
-              <div className="flex justify-center mb-4">{stat.icon}</div>
-              <h3 className="text-3xl font-bold mb-1">{stat.value}</h3>
-              <p className="text-muted-foreground">{stat.label}</p>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-
-      {/* Our Story Section */}
-      <div className="flex flex-col md:flex-row gap-12 items-center mb-16">
-        <div className="md:w-1/2">
-          <h2 className="text-3xl font-bold mb-4">Our Story</h2>
-          <p className="text-muted-foreground mb-4">
-            SmartLearn was founded in 2018 with a simple mission: to make
-            quality education accessible to everyone. What started as a small
-            collection of coding tutorials has grown into a global learning
-            platform with millions of students and thousands of courses spanning
-            every subject imaginable.
-          </p>
-          <p className="text-muted-foreground mb-4">
-            Our founders, Alex and Maya, met while working at a traditional
-            educational institution where they saw firsthand the limitations of
-            conventional learning models. They envisioned a platform that would
-            break down barriers to education and empower people to learn on
-            their own terms.
+      <div className="flex flex-col md:flex-row items-center gap-12">
+        <div className="md:w-1/2 space-y-6">
+          <h1 className="text-4xl font-bold tracking-tight">
+            About SmartLearn
+          </h1>
+          <p className="text-xl text-muted-foreground">
+            Empowering learners worldwide with accessible, high-quality
+            education
           </p>
           <p className="text-muted-foreground">
-            Today, SmartLearn serves learners in over 180 countries, offering
-            courses in multiple languages and partnering with leading
-            universities and companies to provide credentials that help our
-            students advance their careers and pursue their passions.
+            Founded in 2020, SmartLearn has grown from a small startup to a
+            leading online learning platform with millions of students and
+            thousands of instructors from around the globe. Our mission is to
+            create a world where anyone, anywhere can transform their life
+            through education.
           </p>
+          <div className="flex gap-4">
+            <Button className="bg-orange-500 hover:bg-orange-600">
+              Join Our Team
+            </Button>
+            <Button variant="outline">Learn More</Button>
+          </div>
         </div>
-        <div className="md:w-1/2 relative h-80 md:h-96 w-full rounded-lg overflow-hidden">
+        <div className="md:w-1/2 relative h-[400px] w-full rounded-lg overflow-hidden">
           <Image
             src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80"
-            alt="SmartLearn team"
+            alt="Team collaboration"
             fill
             className="object-cover"
           />
         </div>
       </div>
 
-      {/* Our Values Section */}
-      <div className="mb-16">
-        <h2 className="text-3xl font-bold text-center mb-10">Our Values</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {values.map((value, index) => (
-            <Card key={index}>
-              <CardContent className="pt-6">
-                <div className="mb-4">{value.icon}</div>
-                <h3 className="text-xl font-bold mb-2">{value.title}</h3>
-                <p className="text-muted-foreground">{value.description}</p>
-              </CardContent>
-            </Card>
-          ))}
+      {/* Stats Section */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        {stats.map((stat, index) => (
+          <Card key={index}>
+            <CardContent className="p-6 flex flex-col items-center text-center">
+              {stat.icon}
+              <h3 className="text-3xl font-bold mt-4">{stat.value}</h3>
+              <p className="text-muted-foreground">{stat.label}</p>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      {/* Mission & Vision */}
+      <div className="space-y-8">
+        <div className="text-center max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold mb-6">Our Mission & Vision</h2>
+          <p className="text-muted-foreground">
+            We're on a mission to transform traditional education by making
+            quality learning accessible and affordable for everyone, everywhere.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="bg-orange-50 dark:bg-orange-900/10 p-8 rounded-lg">
+            <h3 className="text-xl font-bold mb-4">Our Mission</h3>
+            <p className="text-muted-foreground">
+              To create a world where anyone, anywhere can transform their life
+              through education. We believe learning is the source of human
+              progress and are committed to providing accessible, high-quality
+              education to everyone.
+            </p>
+          </div>
+          <div className="bg-blue-50 dark:bg-blue-900/10 p-8 rounded-lg">
+            <h3 className="text-xl font-bold mb-4">Our Vision</h3>
+            <p className="text-muted-foreground">
+              To be the leading global marketplace for learning and teaching
+              online, helping individuals reach their goals and pursue their
+              dreams. We envision a future where education transcends
+              traditional boundaries.
+            </p>
+          </div>
         </div>
       </div>
 
-      {/* Leadership Team Section */}
-      <div className="mb-16">
-        <h2 className="text-3xl font-bold text-center mb-10">
-          Our Leadership Team
-        </h2>
+      {/* Team Section */}
+      <div className="space-y-8">
+        <div className="text-center">
+          <h2 className="text-3xl font-bold mb-2">Meet Our Leadership Team</h2>
+          <p className="text-muted-foreground max-w-3xl mx-auto">
+            Our diverse team of passionate educators, technologists, and
+            business leaders is dedicated to transforming education worldwide.
+          </p>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {team.map((member, index) => (
-            <Card key={index} className="text-center">
-              <CardContent className="pt-6">
-                <div className="relative w-24 h-24 mx-auto mb-4">
+            <Card key={index}>
+              <CardContent className="p-6 text-center">
+                <div className="relative h-24 w-24 mx-auto mb-4">
                   <Image
                     src={member.image}
                     alt={member.name}
@@ -186,7 +197,7 @@ export default function AboutPage() {
                     className="rounded-full object-cover"
                   />
                 </div>
-                <h3 className="text-xl font-bold">{member.name}</h3>
+                <h3 className="font-bold text-lg">{member.name}</h3>
                 <p className="text-orange-500 mb-2">{member.role}</p>
                 <p className="text-sm text-muted-foreground">{member.bio}</p>
               </CardContent>
@@ -195,33 +206,42 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Join Us Section */}
-      <div className="bg-orange-500 text-white rounded-lg p-8 text-center">
-        <h2 className="text-3xl font-bold mb-4">Join Our Mission</h2>
-        <p className="max-w-2xl mx-auto mb-6">
-          Whether you're a student looking to learn new skills, an instructor
-          with knowledge to share, or a company seeking training solutions, we
-          invite you to join our global learning community.
+      {/* Values Section */}
+      <div className="space-y-8">
+        <div className="text-center">
+          <h2 className="text-3xl font-bold mb-2">Our Core Values</h2>
+          <p className="text-muted-foreground max-w-3xl mx-auto">
+            These principles guide everything we do at SmartLearn.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {values.map((value, index) => (
+            <Card key={index}>
+              <CardContent className="p-6">
+                <div className="mb-4">{value.icon}</div>
+                <h3 className="font-bold text-lg mb-2">{value.title}</h3>
+                <p className="text-muted-foreground">{value.description}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+
+      {/* CTA Section */}
+      <div className="bg-orange-50 dark:bg-orange-900/10 p-12 rounded-lg text-center">
+        <h2 className="text-3xl font-bold mb-4">Join Our Journey</h2>
+        <p className="text-muted-foreground max-w-3xl mx-auto mb-6">
+          Whether you're looking to learn, teach, or join our team, there's a
+          place for you at SmartLearn. Be part of our mission to transform
+          education worldwide.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button
-            className="bg-white text-orange-500 hover:bg-gray-100"
-            asChild
-          >
-            <Link href="/courses">Start Learning</Link>
+        <div className="flex flex-wrap justify-center gap-4">
+          <Button className="bg-orange-500 hover:bg-orange-600">
+            Start Learning
           </Button>
-          <Button
-            className="bg-transparent border border-white hover:bg-orange-600"
-            asChild
-          >
-            <Link href="/teach">Become an Instructor</Link>
-          </Button>
-          <Button
-            className="bg-transparent border border-white hover:bg-orange-600"
-            asChild
-          >
-            <Link href="/business">SmartLearn for Business</Link>
-          </Button>
+          <Button variant="outline">Become an Instructor</Button>
+          <Button variant="outline">View Career Opportunities</Button>
         </div>
       </div>
     </div>
