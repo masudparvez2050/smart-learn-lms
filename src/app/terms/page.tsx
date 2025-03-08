@@ -1,160 +1,193 @@
-export default function TermsPage() {
+import { Card, CardContent } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+
+export default function TermsOfServicePage() {
+  const lastUpdated = "July 15, 2023";
+
   return (
     <div className="container py-12">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold mb-6">Terms of Service</h1>
+        <h1 className="text-4xl font-bold mb-2">Terms of Service</h1>
+        <p className="text-muted-foreground mb-8">
+          Last Updated: {lastUpdated}
+        </p>
 
-        <div className="prose max-w-none">
-          <p className="lead text-muted-foreground">
-            Last Updated: June 1, 2023
-          </p>
+        <Card className="mb-8">
+          <CardContent className="p-6">
+            <div className="prose dark:prose-invert max-w-none">
+              <p>
+                Welcome to SmartLearn. Please read these Terms of Service
+                ("Terms") carefully as they contain important information about
+                your legal rights, remedies, and obligations. By accessing or
+                using the SmartLearn platform, you agree to comply with and be
+                bound by these Terms.
+              </p>
 
+              <h2 className="text-2xl font-bold mt-8 mb-4">
+                1. Account Registration
+              </h2>
+              <p>
+                To access certain features of the platform, you must register
+                for an account. When you register, you agree to provide
+                accurate, current, and complete information and to update such
+                information to keep it accurate, current, and complete. You are
+                responsible for safeguarding your password and for all
+                activities that occur under your account.
+              </p>
+
+              <h2 className="text-2xl font-bold mt-8 mb-4">
+                2. Course Enrollment and Access
+              </h2>
+              <p>
+                When you enroll in a course, you gain a limited, non-exclusive,
+                non-transferable license to access and view the course content
+                for your personal, non-commercial, educational purposes. You may
+                not share your account or course access with others.
+              </p>
+              <p className="mt-2">
+                Unless otherwise specified, you will have lifetime access to
+                courses you have enrolled in and paid for. However, we reserve
+                the right to remove or modify course content at any time.
+              </p>
+
+              <h2 className="text-2xl font-bold mt-8 mb-4">
+                3. Payments and Refunds
+              </h2>
+              <p>
+                Course fees are as listed on the platform and are subject to
+                change. When you make a purchase, you agree to pay the fees for
+                the courses you enroll in.
+              </p>
+              <p className="mt-2">
+                We offer a 30-day refund policy for most courses. If you are
+                unsatisfied with a course, you can request a refund within 30
+                days of enrollment. Some courses or promotional items may have
+                different refund policies, which will be clearly stated at the
+                time of purchase.
+              </p>
+
+              <h2 className="text-2xl font-bold mt-8 mb-4">4. User Content</h2>
+              <p>
+                You may have the opportunity to submit reviews, questions,
+                comments, and other content ("User Content"). You retain
+                ownership of your User Content, but you grant us a worldwide,
+                perpetual, irrevocable, royalty-free license to use, reproduce,
+                modify, adapt, publish, translate, and distribute your User
+                Content in any existing or future media.
+              </p>
+              <p className="mt-2">
+                You agree not to post User Content that is illegal, offensive,
+                threatening, defamatory, or otherwise objectionable. We reserve
+                the right to remove any User Content at our discretion.
+              </p>
+
+              <h2 className="text-2xl font-bold mt-8 mb-4">
+                5. Intellectual Property
+              </h2>
+              <p>
+                The platform and its original content, features, and
+                functionality are owned by SmartLearn and are protected by
+                international copyright, trademark, patent, trade secret, and
+                other intellectual property laws.
+              </p>
+              <p className="mt-2">
+                You may not reproduce, distribute, modify, create derivative
+                works of, publicly display, publicly perform, republish,
+                download, store, or transmit any of the material on our
+                platform, except as permitted by these Terms.
+              </p>
+
+              <h2 className="text-2xl font-bold mt-8 mb-4">
+                6. Prohibited Activities
+              </h2>
+              <p>You agree not to:</p>
+              <ul className="list-disc pl-6 space-y-2 my-4">
+                <li>
+                  Use the platform in any way that violates any applicable law
+                  or regulation
+                </li>
+                <li>
+                  Impersonate or attempt to impersonate SmartLearn, an employee,
+                  another user, or any other person
+                </li>
+                <li>
+                  Engage in any conduct that restricts or inhibits anyone's use
+                  or enjoyment of the platform
+                </li>
+                <li>
+                  Attempt to gain unauthorized access to the platform, user
+                  accounts, or computer systems
+                </li>
+                <li>
+                  Use any robot, spider, or other automatic device to access the
+                  platform
+                </li>
+                <li>
+                  Introduce any viruses, Trojan horses, worms, or other harmful
+                  material
+                </li>
+                <li>Interfere with the proper working of the platform</li>
+              </ul>
+
+              <h2 className="text-2xl font-bold mt-8 mb-4">7. Termination</h2>
+              <p>
+                We may terminate or suspend your account and access to the
+                platform immediately, without prior notice or liability, for any
+                reason, including if you breach these Terms. Upon termination,
+                your right to use the platform will immediately cease.
+              </p>
+
+              <h2 className="text-2xl font-bold mt-8 mb-4">
+                8. Limitation of Liability
+              </h2>
+              <p>
+                In no event shall SmartLearn, its directors, employees,
+                partners, agents, suppliers, or affiliates be liable for any
+                indirect, incidental, special, consequential, or punitive
+                damages, including without limitation, loss of profits, data,
+                use, goodwill, or other intangible losses, resulting from your
+                access to or use of or inability to access or use the platform.
+              </p>
+
+              <h2 className="text-2xl font-bold mt-8 mb-4">9. Governing Law</h2>
+              <p>
+                These Terms shall be governed by and construed in accordance
+                with the laws of the United States, without regard to its
+                conflict of law provisions. Any dispute arising from these Terms
+                shall be resolved in the courts located in New York, New York.
+              </p>
+
+              <h2 className="text-2xl font-bold mt-8 mb-4">
+                10. Changes to Terms
+              </h2>
+              <p>
+                We reserve the right to modify or replace these Terms at any
+                time. If a revision is material, we will provide at least 30
+                days' notice prior to any new terms taking effect. What
+                constitutes a material change will be determined at our sole
+                discretion.
+              </p>
+
+              <h2 className="text-2xl font-bold mt-8 mb-4">11. Contact Us</h2>
+              <p>
+                If you have any questions about these Terms, please contact us
+                at:
+              </p>
+              <p className="mt-2">
+                <strong>Email:</strong> legal@smartlearn.com
+                <br />
+                <strong>Address:</strong> 123 Learning Street, New York, NY
+                10001, United States
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        <div className="text-center text-sm text-muted-foreground">
           <p>
-            Please read these Terms of Service ("Terms", "Terms of Service")
-            carefully before using the SmartLearn website and platform (the
-            "Service") operated by SmartLearn, Inc. ("us", "we", or "our").
-          </p>
-
-          <p>
-            Your access to and use of the Service is conditioned on your
-            acceptance of and compliance with these Terms. These Terms apply to
-            all visitors, users, and others who access or use the Service.
-          </p>
-
-          <p>
-            By accessing or using the Service you agree to be bound by these
-            Terms. If you disagree with any part of the terms, then you may not
-            access the Service.
-          </p>
-
-          <h2 className="text-2xl font-bold mt-8 mb-4">1. Accounts</h2>
-
-          <p>
-            When you create an account with us, you must provide information
-            that is accurate, complete, and current at all times. Failure to do
-            so constitutes a breach of the Terms, which may result in immediate
-            termination of your account on our Service.
-          </p>
-
-          <p>
-            You are responsible for safeguarding the password that you use to
-            access the Service and for any activities or actions under your
-            password, whether your password is with our Service or a third-party
-            service.
-          </p>
-
-          <p>
-            You agree not to disclose your password to any third party. You must
-            notify us immediately upon becoming aware of any breach of security
-            or unauthorized use of your account.
-          </p>
-
-          <h2 className="text-2xl font-bold mt-8 mb-4">2. Content</h2>
-
-          <p>
-            Our Service allows you to post, link, store, share and otherwise
-            make available certain information, text, graphics, videos, or other
-            material ("Content"). You are responsible for the Content that you
-            post on or through the Service, including its legality, reliability,
-            and appropriateness.
-          </p>
-
-          <p>
-            By posting Content on or through the Service, You represent and
-            warrant that: (i) the Content is yours (you own it) or you have the
-            right to use it and grant us the rights and license as provided in
-            these Terms, and (ii) the posting of your Content on or through the
-            Service does not violate the privacy rights, publicity rights,
-            copyrights, contract rights or any other rights of any person.
-          </p>
-
-          <h2 className="text-2xl font-bold mt-8 mb-4">
-            3. Intellectual Property
-          </h2>
-
-          <p>
-            The Service and its original content (excluding Content provided by
-            users), features and functionality are and will remain the exclusive
-            property of SmartLearn, Inc. and its licensors. The Service is
-            protected by copyright, trademark, and other laws of both the United
-            States and foreign countries. Our trademarks and trade dress may not
-            be used in connection with any product or service without the prior
-            written consent of SmartLearn, Inc.
-          </p>
-
-          <h2 className="text-2xl font-bold mt-8 mb-4">
-            4. Links To Other Web Sites
-          </h2>
-
-          <p>
-            Our Service may contain links to third-party web sites or services
-            that are not owned or controlled by SmartLearn, Inc.
-          </p>
-
-          <p>
-            SmartLearn, Inc. has no control over, and assumes no responsibility
-            for, the content, privacy policies, or practices of any third party
-            web sites or services. You further acknowledge and agree that
-            SmartLearn, Inc. shall not be responsible or liable, directly or
-            indirectly, for any damage or loss caused or alleged to be caused by
-            or in connection with use of or reliance on any such content, goods
-            or services available on or through any such web sites or services.
-          </p>
-
-          <h2 className="text-2xl font-bold mt-8 mb-4">5. Termination</h2>
-
-          <p>
-            We may terminate or suspend your account immediately, without prior
-            notice or liability, for any reason whatsoever, including without
-            limitation if you breach the Terms.
-          </p>
-
-          <p>
-            Upon termination, your right to use the Service will immediately
-            cease. If you wish to terminate your account, you may simply
-            discontinue using the Service.
-          </p>
-
-          <h2 className="text-2xl font-bold mt-8 mb-4">
-            6. Limitation Of Liability
-          </h2>
-
-          <p>
-            In no event shall SmartLearn, Inc., nor its directors, employees,
-            partners, agents, suppliers, or affiliates, be liable for any
-            indirect, incidental, special, consequential or punitive damages,
-            including without limitation, loss of profits, data, use, goodwill,
-            or other intangible losses, resulting from (i) your access to or use
-            of or inability to access or use the Service; (ii) any conduct or
-            content of any third party on the Service; (iii) any content
-            obtained from the Service; and (iv) unauthorized access, use or
-            alteration of your transmissions or content, whether based on
-            warranty, contract, tort (including negligence) or any other legal
-            theory, whether or not we have been informed of the possibility of
-            such damage.
-          </p>
-
-          <h2 className="text-2xl font-bold mt-8 mb-4">7. Changes</h2>
-
-          <p>
-            We reserve the right, at our sole discretion, to modify or replace
-            these Terms at any time. If a revision is material we will try to
-            provide at least 30 days notice prior to any new terms taking
-            effect. What constitutes a material change will be determined at our
-            sole discretion.
-          </p>
-
-          <p>
-            By continuing to access or use our Service after those revisions
-            become effective, you agree to be bound by the revised terms. If you
-            do not agree to the new terms, please stop using the Service.
-          </p>
-
-          <h2 className="text-2xl font-bold mt-8 mb-4">8. Contact Us</h2>
-
-          <p>
-            If you have any questions about these Terms, please contact us at
-            support@smartlearn.com.
+            These Terms of Service were last updated on {lastUpdated}. By
+            continuing to access or use our platform after any revisions become
+            effective, you agree to be bound by the revised terms.
           </p>
         </div>
       </div>

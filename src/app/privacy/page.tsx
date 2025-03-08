@@ -1,235 +1,192 @@
-export default function PrivacyPage() {
+import { Card, CardContent } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+
+export default function PrivacyPolicyPage() {
+  const lastUpdated = "July 15, 2023";
+
   return (
     <div className="container py-12">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold mb-6">Privacy Policy</h1>
+        <h1 className="text-4xl font-bold mb-2">Privacy Policy</h1>
+        <p className="text-muted-foreground mb-8">
+          Last Updated: {lastUpdated}
+        </p>
 
-        <div className="prose max-w-none">
-          <p className="lead text-muted-foreground">
-            Last Updated: June 1, 2023
-          </p>
+        <Card className="mb-8">
+          <CardContent className="p-6">
+            <div className="prose dark:prose-invert max-w-none">
+              <p>
+                At SmartLearn, we take your privacy seriously. This Privacy
+                Policy explains how we collect, use, disclose, and safeguard
+                your information when you visit our website or use our learning
+                platform. Please read this privacy policy carefully. If you do
+                not agree with the terms of this privacy policy, please do not
+                access the site.
+              </p>
 
+              <h2 className="text-2xl font-bold mt-8 mb-4">
+                Information We Collect
+              </h2>
+              <p>
+                We collect information that you provide directly to us when you
+                register for an account, create or modify your profile, sign up
+                for newsletters, purchase courses, contact customer support, or
+                communicate with us. This information may include:
+              </p>
+              <ul className="list-disc pl-6 space-y-2 my-4">
+                <li>Name, email address, and password</li>
+                <li>Profile information (such as profile picture)</li>
+                <li>
+                  Payment information (processed by our payment processors)
+                </li>
+                <li>Course preferences and learning history</li>
+                <li>Communications you send to us</li>
+              </ul>
+
+              <p>
+                We also automatically collect certain information when you
+                visit, use or navigate our platform. This information does not
+                reveal your specific identity but may include:
+              </p>
+              <ul className="list-disc pl-6 space-y-2 my-4">
+                <li>Device and usage information</li>
+                <li>IP address</li>
+                <li>Browser and device characteristics</li>
+                <li>Operating system</li>
+                <li>Language preferences</li>
+                <li>Referring URLs</li>
+                <li>Information about how and when you use our platform</li>
+              </ul>
+
+              <h2 className="text-2xl font-bold mt-8 mb-4">
+                How We Use Your Information
+              </h2>
+              <p>We use the information we collect to:</p>
+              <ul className="list-disc pl-6 space-y-2 my-4">
+                <li>Provide, maintain, and improve our services</li>
+                <li>Process transactions and send related information</li>
+                <li>
+                  Send administrative information, such as updates, security
+                  alerts, and support messages
+                </li>
+                <li>Respond to comments, questions, and requests</li>
+                <li>
+                  Personalize your experience and deliver content relevant to
+                  your interests
+                </li>
+                <li>Monitor and analyze trends, usage, and activities</li>
+                <li>Detect, prevent, and address technical issues</li>
+                <li>Protect against harmful or unlawful activity</li>
+              </ul>
+
+              <h2 className="text-2xl font-bold mt-8 mb-4">
+                Sharing Your Information
+              </h2>
+              <p>We may share your information with:</p>
+              <ul className="list-disc pl-6 space-y-2 my-4">
+                <li>
+                  <strong>Service Providers:</strong> We may share your
+                  information with third-party vendors, service providers,
+                  contractors or agents who perform services for us.
+                </li>
+                <li>
+                  <strong>Business Transfers:</strong> If we are involved in a
+                  merger, acquisition, or sale of all or a portion of our
+                  assets, your information may be transferred as part of that
+                  transaction.
+                </li>
+                <li>
+                  <strong>Legal Requirements:</strong> We may disclose your
+                  information where required to do so by law or in response to
+                  valid requests by public authorities.
+                </li>
+                <li>
+                  <strong>With Your Consent:</strong> We may share your
+                  information with your consent or as otherwise disclosed at the
+                  time of data collection or sharing.
+                </li>
+              </ul>
+
+              <h2 className="text-2xl font-bold mt-8 mb-4">
+                Cookies and Tracking Technologies
+              </h2>
+              <p>
+                We use cookies and similar tracking technologies to track
+                activity on our platform and hold certain information. Cookies
+                are files with a small amount of data which may include an
+                anonymous unique identifier. You can instruct your browser to
+                refuse all cookies or to indicate when a cookie is being sent.
+              </p>
+
+              <h2 className="text-2xl font-bold mt-8 mb-4">Data Security</h2>
+              <p>
+                We have implemented appropriate technical and organizational
+                security measures designed to protect the security of any
+                personal information we process. However, despite our
+                safeguards, no security system is impenetrable, and we cannot
+                guarantee the security of our systems 100%.
+              </p>
+
+              <h2 className="text-2xl font-bold mt-8 mb-4">
+                Your Data Protection Rights
+              </h2>
+              <p>
+                Depending on your location, you may have the following rights:
+              </p>
+              <ul className="list-disc pl-6 space-y-2 my-4">
+                <li>The right to access information we hold about you</li>
+                <li>
+                  The right to request correction of your personal information
+                </li>
+                <li>
+                  The right to request deletion of your personal information
+                </li>
+                <li>
+                  The right to object to processing of your personal information
+                </li>
+                <li>The right to data portability</li>
+                <li>The right to withdraw consent</li>
+              </ul>
+
+              <h2 className="text-2xl font-bold mt-8 mb-4">
+                Children's Privacy
+              </h2>
+              <p>
+                Our platform is not intended for children under 13 years of age.
+                We do not knowingly collect personal information from children
+                under 13. If you are a parent or guardian and believe your child
+                has provided us with personal information, please contact us.
+              </p>
+
+              <h2 className="text-2xl font-bold mt-8 mb-4">
+                Changes to This Privacy Policy
+              </h2>
+              <p>
+                We may update our Privacy Policy from time to time. We will
+                notify you of any changes by posting the new Privacy Policy on
+                this page and updating the "Last Updated" date. You are advised
+                to review this Privacy Policy periodically for any changes.
+              </p>
+
+              <h2 className="text-2xl font-bold mt-8 mb-4">Contact Us</h2>
+              <p>
+                If you have any questions about this Privacy Policy, please
+                contact us at:
+              </p>
+              <p className="mt-2">
+                <strong>Email:</strong> privacy@smartlearn.com
+                <br />
+                <strong>Address:</strong> 123 Learning Street, New York, NY
+                10001, United States
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        <div className="text-center text-sm text-muted-foreground">
           <p>
-            SmartLearn, Inc. ("us", "we", or "our") operates the SmartLearn
-            website and platform (the "Service"). This page informs you of our
-            policies regarding the collection, use, and disclosure of personal
-            data when you use our Service and the choices you have associated
-            with that data.
-          </p>
-
-          <p>
-            We use your data to provide and improve the Service. By using the
-            Service, you agree to the collection and use of information in
-            accordance with this policy.
-          </p>
-
-          <h2 className="text-2xl font-bold mt-8 mb-4">
-            1. Information Collection and Use
-          </h2>
-
-          <p>
-            We collect several different types of information for various
-            purposes to provide and improve our Service to you.
-          </p>
-
-          <h3 className="text-xl font-bold mt-6 mb-3">
-            Types of Data Collected
-          </h3>
-
-          <h4 className="text-lg font-bold mt-4 mb-2">Personal Data</h4>
-
-          <p>
-            While using our Service, we may ask you to provide us with certain
-            personally identifiable information that can be used to contact or
-            identify you ("Personal Data"). Personally identifiable information
-            may include, but is not limited to:
-          </p>
-
-          <ul className="list-disc pl-6 my-4">
-            <li>Email address</li>
-            <li>First name and last name</li>
-            <li>Phone number</li>
-            <li>Address, State, Province, ZIP/Postal code, City</li>
-            <li>Cookies and Usage Data</li>
-          </ul>
-
-          <h4 className="text-lg font-bold mt-4 mb-2">Usage Data</h4>
-
-          <p>
-            We may also collect information on how the Service is accessed and
-            used ("Usage Data"). This Usage Data may include information such as
-            your computer's Internet Protocol address (e.g. IP address), browser
-            type, browser version, the pages of our Service that you visit, the
-            time and date of your visit, the time spent on those pages, unique
-            device identifiers and other diagnostic data.
-          </p>
-
-          <h4 className="text-lg font-bold mt-4 mb-2">
-            Tracking & Cookies Data
-          </h4>
-
-          <p>
-            We use cookies and similar tracking technologies to track the
-            activity on our Service and hold certain information.
-          </p>
-
-          <p>
-            Cookies are files with small amount of data which may include an
-            anonymous unique identifier. Cookies are sent to your browser from a
-            website and stored on your device. Tracking technologies also used
-            are beacons, tags, and scripts to collect and track information and
-            to improve and analyze our Service.
-          </p>
-
-          <p>
-            You can instruct your browser to refuse all cookies or to indicate
-            when a cookie is being sent. However, if you do not accept cookies,
-            you may not be able to use some portions of our Service.
-          </p>
-
-          <h2 className="text-2xl font-bold mt-8 mb-4">2. Use of Data</h2>
-
-          <p>SmartLearn, Inc. uses the collected data for various purposes:</p>
-
-          <ul className="list-disc pl-6 my-4">
-            <li>To provide and maintain the Service</li>
-            <li>To notify you about changes to our Service</li>
-            <li>
-              To allow you to participate in interactive features of our Service
-              when you choose to do so
-            </li>
-            <li>To provide customer care and support</li>
-            <li>
-              To provide analysis or valuable information so that we can improve
-              the Service
-            </li>
-            <li>To monitor the usage of the Service</li>
-            <li>To detect, prevent and address technical issues</li>
-          </ul>
-
-          <h2 className="text-2xl font-bold mt-8 mb-4">3. Transfer of Data</h2>
-
-          <p>
-            Your information, including Personal Data, may be transferred to —
-            and maintained on — computers located outside of your state,
-            province, country or other governmental jurisdiction where the data
-            protection laws may differ than those from your jurisdiction.
-          </p>
-
-          <p>
-            If you are located outside United States and choose to provide
-            information to us, please note that we transfer the data, including
-            Personal Data, to United States and process it there.
-          </p>
-
-          <p>
-            Your consent to this Privacy Policy followed by your submission of
-            such information represents your agreement to that transfer.
-          </p>
-
-          <h2 className="text-2xl font-bold mt-8 mb-4">
-            4. Disclosure of Data
-          </h2>
-
-          <h3 className="text-xl font-bold mt-6 mb-3">Legal Requirements</h3>
-
-          <p>
-            SmartLearn, Inc. may disclose your Personal Data in the good faith
-            belief that such action is necessary to:
-          </p>
-
-          <ul className="list-disc pl-6 my-4">
-            <li>To comply with a legal obligation</li>
-            <li>
-              To protect and defend the rights or property of SmartLearn, Inc.
-            </li>
-            <li>
-              To prevent or investigate possible wrongdoing in connection with
-              the Service
-            </li>
-            <li>
-              To protect the personal safety of users of the Service or the
-              public
-            </li>
-            <li>To protect against legal liability</li>
-          </ul>
-
-          <h2 className="text-2xl font-bold mt-8 mb-4">5. Security of Data</h2>
-
-          <p>
-            The security of your data is important to us, but remember that no
-            method of transmission over the Internet, or method of electronic
-            storage is 100% secure. While we strive to use commercially
-            acceptable means to protect your Personal Data, we cannot guarantee
-            its absolute security.
-          </p>
-
-          <h2 className="text-2xl font-bold mt-8 mb-4">
-            6. Your Data Protection Rights
-          </h2>
-
-          <p>
-            We would like to make sure you are fully aware of all of your data
-            protection rights. Every user is entitled to the following:
-          </p>
-
-          <ul className="list-disc pl-6 my-4">
-            <li>
-              The right to access – You have the right to request copies of your
-              personal data.
-            </li>
-            <li>
-              The right to rectification – You have the right to request that we
-              correct any information you believe is inaccurate. You also have
-              the right to request that we complete the information you believe
-              is incomplete.
-            </li>
-            <li>
-              The right to erasure – You have the right to request that we erase
-              your personal data, under certain conditions.
-            </li>
-            <li>
-              The right to restrict processing – You have the right to request
-              that we restrict the processing of your personal data, under
-              certain conditions.
-            </li>
-            <li>
-              The right to object to processing – You have the right to object
-              to our processing of your personal data, under certain conditions.
-            </li>
-            <li>
-              The right to data portability – You have the right to request that
-              we transfer the data that we have collected to another
-              organization, or directly to you, under certain conditions.
-            </li>
-          </ul>
-
-          <h2 className="text-2xl font-bold mt-8 mb-4">
-            7. Changes to This Privacy Policy
-          </h2>
-
-          <p>
-            We may update our Privacy Policy from time to time. We will notify
-            you of any changes by posting the new Privacy Policy on this page.
-          </p>
-
-          <p>
-            We will let you know via email and/or a prominent notice on our
-            Service, prior to the change becoming effective and update the
-            "effective date" at the top of this Privacy Policy.
-          </p>
-
-          <p>
-            You are advised to review this Privacy Policy periodically for any
-            changes. Changes to this Privacy Policy are effective when they are
-            posted on this page.
-          </p>
-
-          <h2 className="text-2xl font-bold mt-8 mb-4">8. Contact Us</h2>
-
-          <p>
-            If you have any questions about this Privacy Policy, please contact
-            us at privacy@smartlearn.com.
+            This privacy policy was last updated on {lastUpdated}. If you have
+            any questions about our privacy practices, please contact us.
           </p>
         </div>
       </div>
